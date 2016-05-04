@@ -10,6 +10,8 @@ from FinanceDataset.config import YahooConfig
 
 __author__ = 'JasonGUTU'
 __version__ = '0.0.1'
+__license__ = 'The MIT License (MIT)'
+__copyright__ = 'Copyright (c) 2016 CUHK(SZ) Computer @nd Comity'
 
 
 class YahooFinance:
@@ -26,7 +28,7 @@ class YahooFinance:
             raise TypeError('stock name must be a string, or a list or tuple of strings.')
         self.stock_name = stock_name
 
-    def get_live_price(self, data_frame=False,*data_field):
+    def get_live_price(self, data_frame=False, *data_field):
         """
         method to get live price, few params can be choose, the params must be strings,
         return a list(two dimensions list if not only one stock),
@@ -102,5 +104,17 @@ class YahooFinance:
         # else:
         #     return result
         return result
+
+    def get_history(self, start_day, end_day=None, time_interval='d', data_frame=False):
+        """
+        method to get history stock prices, start day and end day can be choose,
+        the last argv is time interval:
+            d -> day, w -> week，m -> mouth，v -> dividends only
+        return a list(two dimensions list if not only one stock),
+            or a DataFrame object if data_frame param is True(default to be False).
+
+        if can not find the data you want, the corresponding field will be 'N/A'.
+        """
+        
 
 
